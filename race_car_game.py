@@ -6,12 +6,13 @@ def clear_screen():
     print("\033c", end="")
 
 def draw_car(car_position):
-    print(" " * car_position + "^")
+    print("\n" * (car_position -1) + "^")
 
 def draw_obstacle(obstacle_position):
     print(" " * obstacle_position + "*")
 
 def main():
+    screen_height, screen_width= stdscr.getmaxyx()
     car_position = 10
     obstacle_position = random.randint(1, 20)
     score = 0
@@ -44,6 +45,10 @@ def main():
             car_position += 1
         elif keyboard.is_pressed('left') and car_position > 0:
             car_position -= 1
+        elif keyboard.is_pressed('up') and car_position > 1:
+            car_position -= 1
+        elif keyboard.is_pressed('down') and car_position < 20:
+            car_position += 1
 
 if __name__ == "__main__":
     main()
