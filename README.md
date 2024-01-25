@@ -1,2 +1,2 @@
-# PythonRaceCar
-Codecademy Portfolio Project 
+# Python Pygame - Spaceship Race Game
+
