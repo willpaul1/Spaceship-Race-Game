@@ -4,6 +4,8 @@ import math
 from utilsfile import scale_image, blit_rotate_center, blit_text_center
 pygame.font.init()
 
+
+
 BACKGROUND = pygame.image.load("Resources/Background_RCG.png")
 TRACK = pygame.image.load("Resources/TrackComplete_RCG.png")
 
@@ -22,11 +24,11 @@ WIDTH, HEIGHT = TRACK.get_width(), TRACK.get_height()
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Race!")
 
-MAIN_FONT = pygame.font.SysFont("comicsans", 44)
+MAIN_FONT = pygame.font.SysFont("impact", 44)
 
-#1b
+
 FPS = 60
-PATH = [(145, 61), (130, 220), (370, 165), (375, 280), (246, 400), (166, 359), (74, 656), (219, 632), (352, 535), (659, 542), (620, 395), (667, 265), (721, 139), (391, 72)]#, (237, 459), (116, 344), (69, 512), (158, 671), (339, 572), (589, 594), (741, 492), (560, 366), (755, 232), (720, 84), (389, 81)]
+PATH = [(145, 61), (130, 220), (370, 165), (375, 280), (246, 400), (166, 359), (74, 656), (219, 632), (352, 535), (659, 542), (620, 395), (667, 265), (721, 139), (391, 72)]
 #setting up levels
 class GameInfo:
     # set a limit to the ammount of levels
@@ -58,7 +60,7 @@ class GameInfo:
             return 0
         return round(time.time() - self.level_start_time)
 
-#this isa base class for ships, both player and CPU.
+#this is a base class for ships, both player and CPU.
 class AbstractShip:
 
     # max_vel = maximum velocity, rotation_vel = rotation velocity - want to know how fast the ship is moving and turning
@@ -171,7 +173,7 @@ class CpuShip(AbstractShip):
 
 
     def move(self):
-        #this ensures there is no index error moving to somewher that doesn't exist
+        #this ensures there is no index error moving to somewhere that doesn't exist
         if self.current_point >= len(self.path):
             return
         
@@ -186,18 +188,18 @@ class CpuShip(AbstractShip):
         self.current_point = 0
 
     
-#function fordrawing images in a window (the visuals inside the game window)
+#function for drawing images/text in a window (the visuals inside the game window)
 def draw(win, images, player_ship, cpu_ship, game_info):
     for img, pos in images:
         win.blit(img, pos)
     level_text = MAIN_FONT.render(f"Level {game_info.level}", 1, (255, 255, 255))
-    win.blit(level_text, (10, HEIGHT - level_text.get_height() - 70))
+    win.blit(level_text, (800 - (level_text.get_width()+200), HEIGHT - level_text.get_height() - 120))
 
     time_text = MAIN_FONT.render(f"Time: {game_info.get_level_time()}s", 1, (255, 255, 255))
-    win.blit(time_text, (10, HEIGHT - time_text.get_height() - 40))
+    win.blit(time_text, (800 - (level_text.get_width()+200), HEIGHT - time_text.get_height() - 75))
     
     vel_text = MAIN_FONT.render(f"Velocity: {round(player_ship.vel, 1)}px/s", 1, (255, 255, 255))
-    win.blit(vel_text, (10, HEIGHT - vel_text.get_height() - 10))
+    win.blit(vel_text, (800 - (level_text.get_width()+200), HEIGHT - vel_text.get_height() - 30))
 
     player_ship.draw(win)
     cpu_ship.draw(win)
