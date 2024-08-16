@@ -1,11 +1,11 @@
 # Python Pygame - Spaceship Race Game
 
 Simple pygame example showcasing the following knowledge:
-Pixel Perfect Collision
-Path based navigation - Machine Plotting.
-Mathmatical and Physics Principles: calculating momentum and 360 navigation of objects - example below
+- Pixel Perfect Collision
+- Path based navigation - Machine Plotting.
+- Mathmatical and Physics Principles: calculating momentum and 360 navigation of objects - example below
 
-def calculate_angle(self):
+        def calculate_angle(self):
         target_x, target_y = self.path[self.current_point]
         x_diff = target_x - self.x
         y_diff = target_y - self.y
@@ -29,7 +29,7 @@ def calculate_angle(self):
         else:
             self.angle += min(self.rotation_vel, abs(diff_in_angle))
 
-    def update_path_point(self):
+            def update_path_point(self):
         target = self.path[self.current_point]
         rect = pygame.Rect(self.x, self.y, self.img.get_width(), self.img.get_height())
         if rect.collidepoint(*target):
