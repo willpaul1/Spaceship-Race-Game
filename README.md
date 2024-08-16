@@ -1,5 +1,8 @@
 # Python Pygame - Spaceship Race Game
 
+![image](https://github.com/user-attachments/assets/1bc1479c-1f4f-42e2-bc0d-13c9eb0d7a56)
+
+
 Simple pygame example showcasing the following knowledge:
 - Pixel Perfect Collision
 - Path based navigation - Machine Plotting.
